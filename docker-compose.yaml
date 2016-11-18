@@ -1,0 +1,11 @@
+version: '2'
+services:
+  tests:
+    build: .
+    working_dir: /tests
+    depends_on:
+      - seleniumchrome
+  seleniumchrome:
+    image: selenium/standalone-chrome-debug:3.0.1-aluminum
+    ports:
+      - "5900:5900"
