@@ -9,7 +9,7 @@ def test_news_of_the_world():
     driver_url = "http://seleniumchrome:4444/wd/hub"
     req = urllib2.Request(driver_url)
     try: urllib2.urlopen(req)
-    except URLError as e:
+    except urllib2.URLError as e:
         time.sleep(10)
 
     with splinter.Browser(driver_name="remote",
