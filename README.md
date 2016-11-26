@@ -10,17 +10,19 @@ Docker (a running docker daemon / service version 1.9 or above)
 
 Docker compose
 
-Make & Git
+Git
 
 ## Usage
 
 `git clone https://github.com/8legd/NewsOfTheWorld.git && cd NewsOfTheWorld`
 
-`make setup`
+`docker-compose build`
 
-`make test sch=<search term>` e.g. for success try `make test sch="World"`
+`docker-compose run -e TEST_SEARCH_TERM="<search term>" tests pytest` e.g. for success try `docker-compose run -e TEST_SEARCH_TERM="World" tests pytest`
 
-`make teardown`
+`docker-compose stop`
+
+`docker-compose rm -v -f`
 
 ## Debugging / Watching Tests
 
@@ -30,4 +32,4 @@ To view the tests as they execute you can use VNC to connect to the remote selen
 
 password for the VNC connection is `secret`
 
-TIP: Use an unlikely search term e.g. `make test sch="World Peace"` to delay the test and give you time to connect (timeout on failure is 20 seconds)
+TIP: Use an unlikely search term e.g. `docker-compose run -e TEST_SEARCH_TERM="World Peace" tests pytest` to delay the test and give you time to connect (timeout on failure is 20 seconds)
